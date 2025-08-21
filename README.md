@@ -89,45 +89,9 @@ That's it! The plugin will be automatically loaded by Oh My Zsh.
 
 </details>
 
-## Usage
-
-### Interactive Menu
-
-```bash
-bedrock-claude
-```
-
-Shows an interactive menu with arrow key navigation:
-```
-Bedrock + Claude Code integration:
-Current status: Enabled
-
-→ Enable
-  Disable
-```
-
-**Controls:**
-- `↑/↓` arrows to navigate between options
-- `Enter` to select
-- `q` to quit without changes
-
-### What It Does
-
-#### Enable Mode
-When you select **Enable**:
-- Sets `CLAUDE_CODE_USE_BEDROCK=1`
-- Restores your previous model configurations if available
-- Claude Code will use AWS Bedrock endpoints
-
-#### Disable Mode  
-When you select **Disable**:
-- Removes `CLAUDE_CODE_USE_BEDROCK` environment variable
-- Saves current model settings for later restoration
-- Clears `ANTHROPIC_MODEL` and `ANTHROPIC_SMALL_FAST_MODEL`
-- Claude Code will use Anthropic's direct API
-
-
 ## How It Works
+To be fair, this is super naive and simple - a quick helper utility.
+
 
 The plugin manages environment variables to control Claude Code's behavior:
 - **Enable**: Sets `CLAUDE_CODE_USE_BEDROCK=1` and restores saved model configurations
