@@ -44,23 +44,17 @@ That's it! The plugin will be automatically loaded by Oh My Zsh.
 <details>
 <summary>Antidote Plugin Manager</summary>
 
-1. **Local Plugin Installation:**
-   ```bash
-   # Create local plugin directory
-   mkdir -p ~/.config/zsh/plugins/bedrock-claude
-   
-   # Download the plugin
-   curl -o ~/.config/zsh/plugins/bedrock-claude/bedrock-claude.plugin.zsh \
-     https://raw.githubusercontent.com/AlmogBaku/zsh-bedrock-claude/main/bedrock-claude.plugin.zsh
+1. **Add to your `.zsh_plugins.txt`:**
+   ```
+   AlmogBaku/zsh-bedrock-claude
    ```
 
-2. **Add to your `.zshrc`:**
+   Or **bundle directly in your `.zshrc`:**
    ```bash
-   # Add this line to your antidote bundle list
-   antidote bundle ~/.config/zsh/plugins/bedrock-claude
+   antidote bundle AlmogBaku/zsh-bedrock-claude
    ```
 
-3. **Reload your shell:**
+2. **Reload your shell:**
    ```bash
    source ~/.zshrc
    ```
