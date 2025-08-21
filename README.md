@@ -2,6 +2,18 @@
 
 A ZSH plugin for seamless integration between [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and AWS Bedrock Claude models. Toggle between Anthropic's direct API and AWS Bedrock deployment with an interactive menu. **Perfect for switching between your Claude Pro account and Bedrock deployment as needed.**
 
+## Quick Start
+
+```console
+$ bedrock-claude
+
+Bedrock + Claude Code integration:
+Current status: Enabled
+
+→ Enable
+  Disable
+```
+
 ## Features
 
 - 🔄 **Easy toggle** between Anthropic API and AWS Bedrock
@@ -114,15 +126,6 @@ When you select **Disable**:
 - Clears `ANTHROPIC_MODEL` and `ANTHROPIC_SMALL_FAST_MODEL`
 - Claude Code will use Anthropic's direct API
 
-## Configuration
-
-### AWS Bedrock Setup
-
-Before using this plugin, ensure you have AWS Bedrock properly configured for Claude Code. For detailed setup instructions, see the [official Claude Code AWS Bedrock documentation](https://docs.anthropic.com/en/docs/claude-code/amazon-bedrock).
-
-### Claude Code Integration
-
-This plugin works seamlessly with [Claude Code](https://docs.anthropic.com/en/docs/claude-code). When enabled, Claude Code will automatically use your AWS Bedrock deployment instead of Anthropic's direct API.
 
 ## How It Works
 
