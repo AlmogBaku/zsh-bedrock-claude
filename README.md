@@ -118,105 +118,25 @@ When you select **Disable**:
 
 ### AWS Bedrock Setup
 
-Before using this plugin, ensure you have:
-
-1. **AWS CLI configured** with appropriate credentials:
-   ```bash
-   aws configure
-   ```
-
-2. **Bedrock access** in your AWS region with Claude models enabled
-
-3. **Proper IAM permissions** for Bedrock access:
-   ```json
-   {
-     "Version": "2012-10-17",
-     "Statement": [
-       {
-         "Effect": "Allow",
-         "Action": [
-           "bedrock:InvokeModel",
-           "bedrock:InvokeModelWithResponseStream"
-         ],
-         "Resource": [
-           "arn:aws:bedrock:*::foundation-model/anthropic.claude-*"
-         ]
-       }
-     ]
-   }
-   ```
+Before using this plugin, ensure you have AWS Bedrock properly configured for Claude Code. For detailed setup instructions, see the [official Claude Code AWS Bedrock documentation](https://docs.anthropic.com/en/docs/claude-code/amazon-bedrock).
 
 ### Claude Code Integration
 
 This plugin works seamlessly with [Claude Code](https://docs.anthropic.com/en/docs/claude-code). When enabled, Claude Code will automatically use your AWS Bedrock deployment instead of Anthropic's direct API.
 
-## Environment Variables
+## How It Works
 
-The plugin manages these environment variables:
+The plugin manages environment variables to control Claude Code's behavior:
+- **Enable**: Sets `CLAUDE_CODE_USE_BEDROCK=1` and restores saved model configurations
+- **Disable**: Removes the Bedrock flag and saves current model settings for later restoration
 
-| Variable | Purpose | When Set |
-|----------|---------|----------|
-| `CLAUDE_CODE_USE_BEDROCK` | Enables Bedrock mode | When "Enable" is selected |
-| `ANTHROPIC_MODEL` | Primary model configuration | Managed automatically |
-| `ANTHROPIC_SMALL_FAST_MODEL` | Fast model configuration | Managed automatically |
-| `_SAVED_ANTHROPIC_MODEL` | Backup of model settings | Internal use only |
-| `_SAVED_ANTHROPIC_SMALL_FAST_MODEL` | Backup of fast model settings | Internal use only |
 
-## Use Cases
+## Why Use This Plugin?
 
-### Development Workflow
-```bash
-# Start with Anthropic API for development
-bedrock-claude  # Select "Disable"
-
-# Switch to Bedrock for production testing
-bedrock-claude  # Select "Enable"
-
-# Back to development
-bedrock-claude  # Select "Disable" (restores previous settings)
-```
-
-### Cost Optimization
-- Use Anthropic API for quick iterations and development
-- Switch to Bedrock for production workloads with custom pricing
-- Easily compare performance between deployments
-
-### Compliance Requirements
-- Use Bedrock when you need data to stay within your AWS VPC
-- Switch to Anthropic API when compliance isn't a concern
-- Maintain flexibility without code changes
-
-## Troubleshooting
-
-### Bedrock not working
-```
-Error: Unable to connect to Bedrock
-```
-**Solution:** Ensure your AWS credentials are configured and you have Bedrock access:
-```bash
-aws sts get-caller-identity
-aws bedrock list-foundation-models --region us-east-1
-```
-
-### Models not loading
-```
-Error: Model not found
-```
-**Solution:** Verify Claude models are available in your AWS region and you have the necessary permissions.
-
-### Environment variables not persisting
-**Solution:** The plugin manages variables for the current session only. If you need persistence, add to your `.zshrc`:
-```bash
-export CLAUDE_CODE_USE_BEDROCK=1
-```
-
-## Comparison with Direct Configuration
-
-| Method | Pros | Cons |
-|--------|------|------|
-| This Plugin | ✅ Easy toggle<br>✅ State preservation<br>✅ Interactive menu | ❌ Session-based |
-| Manual Export | ✅ Persistent<br>✅ Scriptable | ❌ Manual management<br>❌ No state preservation |
-| Config Files | ✅ Version controlled<br>✅ Team sharing | ❌ Complex setup<br>❌ Less flexible |
+- **Easy Toggle**: Switch between Anthropic API and AWS Bedrock with a simple command
+- **State Preservation**: Remembers your model configurations when switching
+- **Interactive Menu**: User-friendly interface with arrow key navigation
+- **Session-Based**: Quick switching without permanent configuration changes
 
 ## Contributing
 
